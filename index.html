@@ -1,0 +1,908 @@
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Flavius | Frontend Developer & Software Engineer | Oradea, România
+    </title>
+    <meta
+      name="description"
+      content="Flavius — Frontend Developer specializat în React și TypeScript, cu peste 3 ani de experiență. Dezvoltare web modernă, aplicații performante și consultanță IT în Oradea, România."
+    />
+    <meta
+      name="keywords"
+      content="frontend developer, React, TypeScript, software engineer, dezvoltator web, Oradea, România, aplicații web, consultant IT"
+    />
+    <meta name="author" content="Flavius" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://flavius.dev/" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Flavius | Frontend Developer & Software Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Frontend Developer specializat în React și TypeScript. Dezvoltare web modernă și consultanță IT în Oradea, România."
+    />
+    <meta property="og:url" content="https://flavius.dev/" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta property="og:site_name" content="Flavius Dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Flavius | Frontend Developer & Software Engineer"
+    />
+    <meta
+      name="twitter:description"
+      content="Frontend Developer specializat în React și TypeScript. Dezvoltare web modernă și consultanță IT în Oradea, România."
+    />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Flavius",
+        "jobTitle": "Frontend Developer & Software Engineer",
+        "url": "https://flavius.dev",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Oradea",
+          "addressCountry": "RO"
+        },
+        "knowsAbout": [
+          "React",
+          "TypeScript",
+          "Frontend Development",
+          "Software Engineering",
+          "Web Development"
+        ],
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Universitatea din Oradea"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "GlobalLogic"
+        }
+      }
+    </script>
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --white: #f5f5f0;
+        --green: #00e676;
+        --green-dim: #00c853;
+        --green-glow: rgba(0, 230, 118, 0.15);
+        --grey: #888;
+        --grey-dark: #1a1a1a;
+        --grey-border: #2a2a2a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ::selection {
+        background: var(--green);
+        color: var(--black);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--black);
+        color: var(--white);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+
+      /* Grain overlay */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        padding: 1.5rem 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: rgba(10, 10, 10, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--grey-border);
+      }
+
+      .logo {
+        font-family: "Instrument Serif", serif;
+        font-size: 1.5rem;
+        color: var(--white);
+        text-decoration: none;
+        letter-spacing: -0.02em;
+      }
+
+      .logo span {
+        color: var(--green);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--grey);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--green);
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 8rem 3rem 4rem;
+        position: relative;
+      }
+
+      .hero-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: var(--green);
+        margin-bottom: 2rem;
+        font-weight: 500;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.2s;
+      }
+
+      .hero h1 {
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(3rem, 8vw, 7rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        font-weight: 400;
+        max-width: 900px;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.4s;
+      }
+
+      .hero h1 em {
+        font-style: italic;
+        color: var(--green);
+      }
+
+      .hero-sub {
+        margin-top: 2.5rem;
+        font-size: 1.15rem;
+        color: var(--grey);
+        max-width: 520px;
+        line-height: 1.8;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.6s;
+      }
+
+      .hero-cta {
+        margin-top: 3rem;
+        display: flex;
+        gap: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.8s ease forwards 0.8s;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2.2rem;
+        background: var(--green);
+        color: var(--black);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background: var(--white);
+        box-shadow: 0 0 40px var(--green-glow);
+      }
+
+      .btn-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem 2.2rem;
+        background: transparent;
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border: 1px solid var(--grey-border);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        border-color: var(--green);
+        color: var(--green);
+      }
+
+      /* Floating line decoration */
+      .hero::before {
+        content: "";
+        position: absolute;
+        right: 8%;
+        top: 25%;
+        width: 1px;
+        height: 200px;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--green),
+          transparent
+        );
+        opacity: 0;
+        animation: lineReveal 1.5s ease forwards 1s;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: 12%;
+        top: 55%;
+        width: 80px;
+        height: 80px;
+        border: 1px solid var(--grey-border);
+        border-radius: 50%;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards 1.2s;
+      }
+
+      /* Sections */
+      section {
+        padding: 6rem 3rem;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        color: var(--green);
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .section-title {
+        font-family: "Instrument Serif", serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: -0.02em;
+        font-weight: 400;
+        margin-bottom: 3rem;
+      }
+
+      /* About */
+      #despre {
+        border-top: 1px solid var(--grey-border);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 2rem;
+      }
+
+      .about-text {
+        color: var(--grey);
+        font-size: 1.05rem;
+        line-height: 1.9;
+      }
+
+      .about-text strong {
+        color: var(--white);
+        font-weight: 500;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .stat {
+        padding: 1.5rem;
+        border: 1px solid var(--grey-border);
+        transition: border-color 0.3s;
+      }
+
+      .stat:hover {
+        border-color: var(--green);
+      }
+
+      .stat-number {
+        font-family: "Instrument Serif", serif;
+        font-size: 2.5rem;
+        color: var(--green);
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 0.8rem;
+        color: var(--grey);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 0.5rem;
+      }
+
+      /* Skills */
+      #competente {
+        border-top: 1px solid var(--grey-border);
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--grey-border);
+        border: 1px solid var(--grey-border);
+      }
+
+      .skill-card {
+        background: var(--black);
+        padding: 2.5rem;
+        transition: all 0.4s;
+        position: relative;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--green);
+        transition: width 0.4s;
+      }
+
+      .skill-card:hover::before {
+        width: 100%;
+      }
+
+      .skill-card:hover {
+        background: var(--grey-dark);
+      }
+
+      .skill-icon {
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        display: block;
+      }
+
+      .skill-card h3 {
+        font-family: "Instrument Serif", serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        margin-bottom: 0.8rem;
+      }
+
+      .skill-card p {
+        font-size: 0.9rem;
+        color: var(--grey);
+        line-height: 1.7;
+      }
+
+      /* Services */
+      #servicii {
+        border-top: 1px solid var(--grey-border);
+      }
+
+      .services-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-item {
+        display: grid;
+        grid-template-columns: 60px 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 2.5rem 0;
+        border-bottom: 1px solid var(--grey-border);
+        cursor: default;
+        transition: all 0.3s;
+      }
+
+      .service-item:hover {
+        padding-left: 1rem;
+      }
+
+      .service-item:hover .service-num {
+        color: var(--green);
+      }
+
+      .service-num {
+        font-family: "Instrument Serif", serif;
+        font-size: 1.2rem;
+        color: var(--grey);
+        transition: color 0.3s;
+      }
+
+      .service-info h3 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 0.3rem;
+      }
+
+      .service-info p {
+        font-size: 0.9rem;
+        color: var(--grey);
+      }
+
+      .service-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--green);
+        border: 1px solid var(--green);
+        padding: 0.4rem 1rem;
+        white-space: nowrap;
+      }
+
+      /* Contact */
+      #contact {
+        border-top: 1px solid var(--grey-border);
+        padding-bottom: 4rem;
+      }
+
+      .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 2rem;
+      }
+
+      .contact-text {
+        color: var(--grey);
+        font-size: 1.05rem;
+        line-height: 1.9;
+      }
+
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.2rem 1.5rem;
+        border: 1px solid var(--grey-border);
+        text-decoration: none;
+        color: var(--white);
+        transition: all 0.3s;
+      }
+
+      .contact-link:hover {
+        border-color: var(--green);
+        background: var(--grey-dark);
+      }
+
+      .contact-link span {
+        font-size: 0.9rem;
+      }
+
+      .contact-link .arrow {
+        color: var(--green);
+        font-size: 1.2rem;
+        transition: transform 0.3s;
+      }
+
+      .contact-link:hover .arrow {
+        transform: translateX(5px);
+      }
+
+      /* Footer */
+      footer {
+        padding: 2rem 3rem;
+        border-top: 1px solid var(--grey-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      footer p {
+        font-size: 0.8rem;
+        color: var(--grey);
+      }
+
+      footer a {
+        color: var(--green);
+        text-decoration: none;
+      }
+
+      /* Scroll animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Keyframes */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 0.3;
+        }
+      }
+
+      @keyframes lineReveal {
+        from {
+          opacity: 0;
+          height: 0;
+        }
+        to {
+          opacity: 0.4;
+          height: 200px;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem 1.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero {
+          padding: 7rem 1.5rem 3rem;
+        }
+        section {
+          padding: 4rem 1.5rem;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+        .contact-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .hero-cta {
+          flex-direction: column;
+        }
+        .hero::before,
+        .hero::after {
+          display: none;
+        }
+        .service-item {
+          grid-template-columns: 40px 1fr;
+        }
+        .service-tag {
+          display: none;
+        }
+        footer {
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav aria-label="Navigare principală">
+      <a href="#" class="logo">flavius<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#despre">Despre</a></li>
+        <li><a href="#competente">Competențe</a></li>
+        <li><a href="#servicii">Servicii</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <p class="hero-label">Frontend Developer · Oradea, România</p>
+      <h1>Construiesc<br />experiențe <em>digitale</em><br />cu precizie.</h1>
+      <p class="hero-sub">
+        Specializat în React și TypeScript, transform idei complexe în interfețe
+        elegante, rapide și memorabile.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Hai să vorbim →</a>
+        <a href="#servicii" class="btn-secondary">Descoperă serviciile</a>
+      </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="despre">
+      <p class="section-label reveal">01 — Despre mine</p>
+      <h2 class="section-title reveal">Cod curat, design<br />cu intenție.</h2>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Sunt <strong>Frontend Developer</strong> la GlobalLogic cu peste 3
+            ani de experiență în construirea de aplicații web moderne. Lucrez
+            zilnic cu <strong>React</strong>, <strong>TypeScript</strong> și
+            ecosistemul JavaScript pentru a livra produse digitale de calitate.
+          </p>
+          <br />
+          <p>
+            În paralel, urmez un program doctoral și predau
+            <strong>Software Engineering</strong> la universitate — ceea ce mă
+            ține permanent conectat la fundamente și la ultimele tendințe din
+            industrie.
+          </p>
+        </div>
+        <div class="stats reveal">
+          <article class="stat">
+            <p class="stat-number">3+</p>
+            <p class="stat-label">Ani experiență</p>
+          </article>
+          <article class="stat">
+            <p class="stat-number">React</p>
+            <p class="stat-label">Framework principal</p>
+          </article>
+          <article class="stat">
+            <p class="stat-number">PhD</p>
+            <p class="stat-label">Program doctoral</p>
+          </article>
+          <article class="stat">
+            <p class="stat-number">∞</p>
+            <p class="stat-label">Curiozitate</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="competente">
+      <p class="section-label reveal">02 — Competențe</p>
+      <h2 class="section-title reveal">Tehnologii & aptitudini</h2>
+      <div class="skills-grid reveal">
+        <article class="skill-card">
+          <span class="skill-icon">⚛</span>
+          <h3>React & TypeScript</h3>
+          <p>
+            Componente reutilizabile, state management avansat, React Hook Form,
+            Zod, MUI — stack-ul meu zilnic.
+          </p>
+        </article>
+        <article class="skill-card">
+          <span class="skill-icon">◆</span>
+          <h3>Frontend Modern</h3>
+          <p>
+            HTML semantic, CSS modern, responsive design, accesibilitate,
+            performanță și SEO optimization.
+          </p>
+        </article>
+        <article class="skill-card">
+          <span class="skill-icon">⬡</span>
+          <h3>Testing & QA</h3>
+          <p>
+            Vitest, React Testing Library, MSW — teste de integrare și unit
+            tests pentru cod robust și fiabil.
+          </p>
+        </article>
+        <article class="skill-card">
+          <span class="skill-icon">◐</span>
+          <h3>Backend & API</h3>
+          <p>
+            Node.js, Express, PostgreSQL, REST APIs. Full-stack când proiectul o
+            cere.
+          </p>
+        </article>
+        <article class="skill-card">
+          <span class="skill-icon">△</span>
+          <h3>UI/UX Design</h3>
+          <p>
+            Figma, design systems, interfețe intuitive. Design cu scop, nu doar
+            frumos.
+          </p>
+        </article>
+        <article class="skill-card">
+          <span class="skill-icon">◎</span>
+          <h3>DevOps & Tools</h3>
+          <p>
+            Git, CI/CD, Vercel, Docker basics. Workflow eficient de la
+            development la production.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicii">
+      <p class="section-label reveal">03 — Servicii</p>
+      <h2 class="section-title reveal">Ce pot face pentru tine</h2>
+      <div class="services-list reveal">
+        <div class="service-item">
+          <span class="service-num">01</span>
+          <div class="service-info">
+            <h3>Dezvoltare Web Modernă</h3>
+            <p>
+              Aplicații web performante cu React, TypeScript și cele mai noi
+              tehnologii frontend.
+            </p>
+          </div>
+          <span class="service-tag">React · TypeScript</span>
+        </div>
+        <div class="service-item">
+          <span class="service-num">02</span>
+          <div class="service-info">
+            <h3>Landing Pages & Prezentări</h3>
+            <p>
+              Pagini de prezentare optimizate pentru conversii, SEO și încărcare
+              rapidă.
+            </p>
+          </div>
+          <span class="service-tag">HTML · CSS · JS</span>
+        </div>
+        <div class="service-item">
+          <span class="service-num">03</span>
+          <div class="service-info">
+            <h3>Consultanță Tehnică</h3>
+            <p>
+              Code review, arhitectură frontend, alegerea stack-ului potrivit
+              pentru proiectul tău.
+            </p>
+          </div>
+          <span class="service-tag">Strategie</span>
+        </div>
+        <div class="service-item">
+          <span class="service-num">04</span>
+          <div class="service-info">
+            <h3>Mentenanță & Optimizare</h3>
+            <p>
+              Refactorizare, îmbunătățire performanță, actualizare dependențe și
+              rezolvare bug-uri.
+            </p>
+          </div>
+          <span class="service-tag">Support</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <p class="section-label reveal">04 — Contact</p>
+      <h2 class="section-title reveal">Hai să construim<br />ceva împreună.</h2>
+      <div class="contact-content">
+        <p class="contact-text reveal">
+          Sunt deschis la proiecte noi, colaborări și freelance. Dacă ai o idee
+          sau un proiect care necesită un frontend developer dedicat, scrie-mi
+          și hai să vedem ce putem crea împreună.
+        </p>
+        <div class="contact-links reveal">
+          <a href="mailto:contact@flavius.dev" class="contact-link">
+            <span>contact@flavius.dev</span>
+            <span class="arrow">→</span>
+          </a>
+          <a
+            href="https://github.com/flavius"
+            class="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>GitHub</span>
+            <span class="arrow">→</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/flavius"
+            class="contact-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>LinkedIn</span>
+            <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>© 2026 Flavius. Toate drepturile rezervate.</p>
+      <p>Construit cu pasiune în <a href="#">Oradea, România</a></p>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+
+    <!-- Sitemap hint for SEO -->
+    <!-- Adaugă un fișier sitemap.xml pe Vercel: -->
+    <!-- <?xml version="1.0" encoding="UTF-8"?> -->
+    <!-- <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"> -->
+    <!--   <url><loc>https://flavius.dev/</loc><priority>1.0</priority></url> -->
+    <!-- </urlset> -->
+  </body>
+</html>
